@@ -185,4 +185,32 @@ button {
   line-height: 1; /* Компактна висота рядків */
 }
 
+/* Медиа-запросы для адаптації галереї */
+@media (max-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(150px, 1fr)
+    ); /* Меньше колонок на больших экранах */
+  }
+}
+
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(120px, 1fr)
+    ); /* Еще меньше колонок на средних экранах */
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(100px, 1fr)
+    ); /* Самые маленькие колонки на маленьких экранах */
+  }
+}
+
 /* #endregion Gallery */
