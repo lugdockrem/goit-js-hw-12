@@ -4,19 +4,23 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Image Search App</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
-
     <main>
-      <!-- Loads the specified .html file -->
-      <load src="./partials/vite-promo.html" />
-      <load src="./partials/badges.html" />
-    </main>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search images..." />
+        <button type="button" id="search-button">Search</button>
+      </div>
 
-    <load src="./partials/footer.html" />
+      <!-- Додаємо елемент індикатора до основного вмісту -->
+      <div id="loading-indicator" class="loading-indicator">
+        Loading images, please wait...
+      </div>
+
+      <ul class="gallery" id="gallery"></ul>
+    </main>
 
     <script type="module" src="./main.js"></script>
   </body>

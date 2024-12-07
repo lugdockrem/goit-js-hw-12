@@ -1,18 +1,188 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-/* Common styles */
-@import url('./reset.css');
-@import url('./base.css');
-@import url('./container.css');
-@import url('./animations.css');
+/* #region Image search */
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+/* Скидання стилів для інпутів та кнопок */
+input,
+button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Стилі для контейнера пошуку */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+#search-input {
+  width: 272px;
+  height: 40px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+#search-input:hover,
+#search-input:focus {
+  border: 1px solid #000;
+}
+
+#search-button {
+  width: 91px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #4e75ff;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-button:hover,
+#search-button:focus {
+  background-color: #6c8cff;
+}
+
+#loading-indicator {
+  display: none; /* Приховуємо за замовчуванням */
+  position: absolute;
+  top: 80px; /* Відступ від верхнього краю екрану, 32px нижче за інпут з кнопкою */
+  left: 50%;
+  transform: translateX(-50%); /* Центруємо індикатор по горизонталі */
+  font: 400 16px / 1.5 'Montserrat', sans-serif;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+  text-align: center;
+  z-index: 100; /* Для того, щоб індикатор був поверх інших елементів */
+}
+
+/* #endregion */
+/* #region Gallery */
+
+/* Контейнер галереї */
+.gallery {
+  margin-top: 100px; /* Відступ від інпуту та індикатора */
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  ); /* Адаптивна сетка */
+  gap: 16px; /* Відступи між картками */
+  padding: 16px;
+  list-style: none;
+  margin: 0 auto; /* Центруємо галерею */
+  max-width: 1800px; /* Максимальна ширина галереї */
+}
+
+.gallery a {
+  display: block;
+  width: 100%; /* Ширина прев'ю залежить від колонки */
+  height: auto; /* Висота підлаштовується під ширину */
+  overflow: hidden;
+}
+
+/* Посилання в галереї */
+.gallery__item {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  background-color: #f9f9f9;
+  text-decoration: none;
+}
+
+/* Зображення */
+.photo-card__image {
+  display: block;
+  width: 100%;
+  height: 160px; /* Висота прев’ю */
+  object-fit: cover; /* Зберігає пропорції */
+  border-radius: 8px; /* Повне закруглення */
+}
+
+/* Інформація про зображення */
+.info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 стовпчики */
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  height: 29px; /* Приблизно 1/5 висоти прев'ю */
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: #555;
+  line-height: 1;
+}
+
+.info-item b {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+/* Виправлення закруглення зображень */
+.photo-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 8px; /* Закруглення всіх кутів */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Ефекти при наведенні */
+.gallery__item:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-in-out;
+}
+
+.photo-card__image:hover {
+  opacity: 0.9;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Стилі для інфоблока під фото */
+.photo-card .info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 рівні стовпчики */
+  gap: 4px; /* Відступи між стовпчиками */
+  font-size: 10px; /* Ще менший текст */
+  color: #555; /* Текст темно-сірого кольору */
+  background-color: #f8f8f8; /* Світлий фон для блоку */
+  padding: 2px; /* Ще менші внутрішні відступи */
+  border-top: 1px solid #ddd; /* Легка лінія відокремлення */
+}
+
+.photo-card .info-item b {
+  display: block;
+  font-weight: bold;
+  color: #333; /* Темніший текст для заголовків */
+  margin-bottom: 1px; /* Мінімальний відступ між заголовком і числом */
+}
+
+.photo-card .info-item {
+  text-align: center; /* Вирівнювання тексту по центру */
+  font-size: 10px; /* Ще менший текст */
+  line-height: 1; /* Компактна висота рядків */
+}
+
+/* #endregion Gallery */
