@@ -30,6 +30,7 @@ button {
   border-radius: 4px;
   padding: 8px;
   font-size: 14px;
+  margin: 0; /* Убираем маржины */
 }
 
 #search-input:hover,
@@ -47,10 +48,29 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0; /* Убираем маржины */
 }
 
 #search-button:hover,
 #search-button:focus {
+  background-color: #6c8cff;
+}
+
+#load-more-button {
+  width: 125px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #4e75ff;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto; /* Центруємо кнопку */
+}
+
+#load-more-button:hover,
+#load-more-button:focus {
   background-color: #6c8cff;
 }
 

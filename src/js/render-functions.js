@@ -39,15 +39,9 @@ export function createGalleryMarkup(images) {
     .join('');
 }
 
-// Функція для очищення галереї перед новим запитом
-export function clearGallery(container) {
-  container.innerHTML = '';
-}
-
 // Функція для рендеринга галереї на сторінці
 export function renderGallery(images) {
   const gallery = document.querySelector('.gallery');
-  clearGallery(gallery); // Очищаємо галерею перед рендерингом нових елементів
   const markup = createGalleryMarkup(images); // Створюємо нову розмітку
   gallery.insertAdjacentHTML('beforeend', markup); // Додаємо розмітку в галерею
 }
