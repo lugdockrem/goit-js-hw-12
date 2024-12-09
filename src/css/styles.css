@@ -1,6 +1,5 @@
 /* #region Image search */
 
-/* Скидання стилів для інпутів та кнопок */
 input,
 button {
   margin: 0;
@@ -14,7 +13,6 @@ button {
   cursor: pointer;
 }
 
-/* Стилі для контейнера пошуку */
 .search-container {
   display: flex;
   justify-content: center;
@@ -30,7 +28,7 @@ button {
   border-radius: 4px;
   padding: 8px;
   font-size: 14px;
-  margin: 0; /* Убираем маржины */
+  margin: 0;
 }
 
 #search-input:hover,
@@ -48,7 +46,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0; /* Убираем маржины */
+  margin: 0;
 }
 
 #search-button:hover,
@@ -66,7 +64,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px auto; /* Центруємо кнопку */
+  margin: 20px auto;
 }
 
 #load-more-button:hover,
@@ -75,44 +73,39 @@ button {
 }
 
 #loading-indicator {
-  display: none; /* Приховуємо за замовчуванням */
+  display: none;
   position: absolute;
-  top: 80px; /* Відступ від верхнього краю екрану, 32px нижче за інпут з кнопкою */
+  top: 80px;
   left: 50%;
-  transform: translateX(-50%); /* Центруємо індикатор по горизонталі */
+  transform: translateX(-50%);
   font: 400 16px / 1.5 'Montserrat', sans-serif;
   letter-spacing: 0.04em;
   color: #2e2f42;
   text-align: center;
-  z-index: 100; /* Для того, щоб індикатор був поверх інших елементів */
+  z-index: 100;
 }
 
 /* #endregion */
 /* #region Gallery */
 
-/* Контейнер галереї */
 .gallery {
-  margin-top: 100px; /* Відступ від інпуту та індикатора */
+  margin-top: 100px;
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(200px, 1fr)
-  ); /* Адаптивна сетка */
-  gap: 16px; /* Відступи між картками */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
   padding: 16px;
   list-style: none;
-  margin: 0 auto; /* Центруємо галерею */
-  max-width: 1800px; /* Максимальна ширина галереї */
+  margin: 0 auto;
+  max-width: 1800px;
 }
 
 .gallery a {
   display: block;
-  width: 100%; /* Ширина прев'ю залежить від колонки */
-  height: auto; /* Висота підлаштовується під ширину */
+  width: 100%;
+  height: auto;
   overflow: hidden;
 }
 
-/* Посилання в галереї */
 .gallery__item {
   display: block;
   border-radius: 8px;
@@ -123,25 +116,23 @@ button {
   text-decoration: none;
 }
 
-/* Зображення */
 .photo-card__image {
   display: block;
   width: 100%;
-  height: 160px; /* Висота прев’ю */
-  object-fit: cover; /* Зберігає пропорції */
-  border-radius: 8px; /* Повне закруглення */
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-/* Інформація про зображення */
 .info {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 стовпчики */
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   gap: 4px;
   padding: 8px;
   background-color: #ffffff;
   border-top: 1px solid #ddd;
-  height: 29px; /* Приблизно 1/5 висоти прев'ю */
+  height: 29px;
 }
 
 .info-item {
@@ -159,17 +150,15 @@ button {
   margin-bottom: 2px;
 }
 
-/* Виправлення закруглення зображень */
 .photo-card {
   position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 8px; /* Закруглення всіх кутів */
+  border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Ефекти при наведенні */
 .gallery__item:hover {
   transform: scale(1.02);
   transition: transform 0.2s ease-in-out;
@@ -180,56 +169,45 @@ button {
   transition: opacity 0.2s ease-in-out;
 }
 
-/* Стилі для інфоблока під фото */
 .photo-card .info {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 рівні стовпчики */
-  gap: 4px; /* Відступи між стовпчиками */
-  font-size: 10px; /* Ще менший текст */
-  color: #555; /* Текст темно-сірого кольору */
-  background-color: #f8f8f8; /* Світлий фон для блоку */
-  padding: 2px; /* Ще менші внутрішні відступи */
-  border-top: 1px solid #ddd; /* Легка лінія відокремлення */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  font-size: 10px;
+  color: #555;
+  background-color: #f8f8f8;
+  padding: 2px;
+  border-top: 1px solid #ddd;
 }
 
 .photo-card .info-item b {
   display: block;
   font-weight: bold;
-  color: #333; /* Темніший текст для заголовків */
-  margin-bottom: 1px; /* Мінімальний відступ між заголовком і числом */
+  color: #333;
+  margin-bottom: 1px;
 }
 
 .photo-card .info-item {
-  text-align: center; /* Вирівнювання тексту по центру */
-  font-size: 10px; /* Ще менший текст */
-  line-height: 1; /* Компактна висота рядків */
+  text-align: center;
+  font-size: 10px;
+  line-height: 1;
 }
 
-/* Медиа-запросы для адаптації галереї */
 @media (max-width: 1200px) {
   .gallery {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(150px, 1fr)
-    ); /* Меньше колонок на больших экранах */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
 
 @media (max-width: 900px) {
   .gallery {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(120px, 1fr)
-    ); /* Еще меньше колонок на средних экранах */
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
 }
 
 @media (max-width: 600px) {
   .gallery {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(100px, 1fr)
-    ); /* Самые маленькие колонки на маленьких экранах */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 }
 

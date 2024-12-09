@@ -1,4 +1,3 @@
-// Функція створення розмітки для галереї
 export function createGalleryMarkup(images) {
   return images
     .map(
@@ -39,9 +38,8 @@ export function createGalleryMarkup(images) {
     .join('');
 }
 
-// Функція для рендеринга галереї на сторінці
 export function renderGallery(images) {
   const gallery = document.querySelector('.gallery');
-  const markup = createGalleryMarkup(images); // Створюємо нову розмітку
-  gallery.insertAdjacentHTML('beforeend', markup); // Додаємо розмітку в галерею
+  const markup = createGalleryMarkup(images);
+  gallery.insertAdjacentHTML('beforeend', markup);
 }

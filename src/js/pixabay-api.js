@@ -1,8 +1,5 @@
-// pixabay-api.js
-
 import axios from 'axios';
 
-// Функція отримання даних з API
 export async function fetchImages(query, page, perPage) {
   const API_KEY = '47381991-217f0392cb987e93da3bacc78';
   const BASE_URL = 'https://pixabay.com/api/';

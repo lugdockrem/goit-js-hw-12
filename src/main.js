@@ -5,46 +5,38 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { createGalleryMarkup } from './js/render-functions.js';
 
-// Налаштування iziToast
 iziToast.settings({
   position: 'topRight',
   timeout: 5000,
   progressBar: true,
 });
 
-// Елементи інтерфейсу
 const searchInput = document.querySelector('#search-input');
 const searchButton = document.querySelector('#search-button');
 const gallery = document.querySelector('.gallery');
 const loadMoreButton = document.querySelector('#load-more-button');
 const loadingIndicator = document.querySelector('#loading-indicator');
 
-// Ініціалізація SimpleLightbox
 let lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
 
-// Параметри для пошуку
 let currentPage = 1;
 const perPage = 15;
 let currentQuery = '';
 let totalHits = 0;
 
-// Обробник кнопки пошуку
 searchButton.addEventListener('click', onSearch);
 
-// Обробник для клавіші Enter
 searchInput.addEventListener('keypress', event => {
   if (event.key === 'Enter') {
     onSearch();
   }
 });
 
-// Обробник кнопки "Load more"
 loadMoreButton.addEventListener('click', onLoadMore);
 
-// Функція для пошуку
 async function onSearch() {
   currentQuery = searchInput.value.trim();
 
@@ -76,7 +68,6 @@ async function onSearch() {
       lightbox.refresh();
       loadMoreButton.style.display = totalHits > perPage ? 'block' : 'none';
 
-      // Якщо відразу після першого запиту всі результати відображені
       if (currentPage * perPage >= totalHits) {
         iziToast.info({
           title: 'End of Results',
@@ -97,7 +88,6 @@ async function onSearch() {
   }
 }
 
-// Функція для завантаження більше зображень
 async function onLoadMore() {
   if (!currentQuery) return;
 
@@ -118,7 +108,6 @@ async function onLoadMore() {
       lightbox.refresh();
       smoothScroll();
 
-      // Якщо завантаження останньої сторінки
       if (currentPage * perPage >= totalHits) {
         iziToast.info({
           title: 'End of Results',
@@ -138,29 +127,12 @@ async function onLoadMore() {
   }
 }
 
-import { fetchImages } from './js/pixabay-api.js'; // Імпортуємо функцію, що відповідає за отримання зображень з API
-// // Функція отримання даних з API
-// async function fetchImages(query, page, perPage) {
-//   const API_KEY = '47381991-217f0392cb987e93da3bacc78';
-//   const BASE_URL = 'https://pixabay.com/api/';
-//   const url = `${BASE_URL}?key=${API_KEY}&q=${encodeURIComponent(
-//     query
-//   )}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${perPage}`;
-
-//   const response = await axios.get(url);
-//   return {
-//     hits: response.data.hits,
-//     totalHits: response.data.totalHits,
-//   };
-// }
-
-// Функція для рендерингу галереї
+import { fetchImages } from './js/pixabay-api.js';
 function renderGallery(images) {
   const markup = createGalleryMarkup(images);
   gallery.insertAdjacentHTML('beforeend', markup);
 }
 
-// Функція плавної прокрутки
 function smoothScroll() {
   const galleryCards = document.querySelectorAll('.gallery .photo-card');
   if (galleryCards.length > 0) {
