@@ -92,6 +92,7 @@ button {
   margin-top: 100px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
   gap: 16px;
   padding: 16px;
   list-style: none;
@@ -201,7 +202,7 @@ button {
 
 @media (max-width: 900px) {
   .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat (auto-fill, minmax(120px, 1fr));
   }
 }
 

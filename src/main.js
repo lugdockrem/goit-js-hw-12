@@ -97,24 +97,16 @@ async function onLoadMore() {
     currentPage += 1;
     const response = await fetchImages(currentQuery, currentPage, perPage);
 
-    if (response.hits.length === 0 || currentPage * perPage >= totalHits) {
+    renderGallery(response.hits);
+    lightbox.refresh();
+    smoothScroll();
+
+    if (currentPage * perPage >= totalHits || response.hits.length < perPage) {
       iziToast.info({
         title: 'End of Results',
         message: "We're sorry, but you've reached the end of search results.",
       });
       loadMoreButton.style.display = 'none';
-    } else {
-      renderGallery(response.hits);
-      lightbox.refresh();
-      smoothScroll();
-
-      if (currentPage * perPage >= totalHits) {
-        iziToast.info({
-          title: 'End of Results',
-          message: "We're sorry, but you've reached the end of search results.",
-        });
-        loadMoreButton.style.display = 'none';
-      }
     }
   } catch (error) {
     console.error('Error fetching more images:', error);
@@ -128,6 +120,7 @@ async function onLoadMore() {
 }
 
 import { fetchImages } from './js/pixabay-api.js';
+
 function renderGallery(images) {
   const markup = createGalleryMarkup(images);
   gallery.insertAdjacentHTML('beforeend', markup);
